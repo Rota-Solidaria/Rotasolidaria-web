@@ -1,4 +1,4 @@
-# Rota Solidária (versão simplificada)
+# Rota Solidária
 
 Site para organizar **excursões gratuitas de ônibus para doação de sangue**.
 
@@ -98,22 +98,11 @@ src/main/resources/
 - `inscricoes`: id, campanha_id, doador_id, nome, telefone, email, cidade, observacao, status (CONFIRMADA / CANCELADA), data_inscricao
 - `organizadores`: id, email, senha
 
-### Única coisa nova: a sessão (HttpSession)
 
-Como o HTTP não guarda estado, o login do organizador usa a **sessão**: depois de
-acertar e-mail e senha, o controller faz `session.setAttribute("organizador", email)`.
-Em cada página da área do organizador ele confere se esse valor existe; se não existir,
-redireciona para o login. Ao sair, `session.invalidate()` apaga a sessão.
-
-> A senha fica em texto puro no banco: aceitável só em ambiente de estudo.
-
----
-
-## Problemas comuns
+## Informações adicionais 
 
 - **`Access denied for user 'root'`** → usuário/senha errados no `application.properties`.
 - **`Communications link failure`** → o MySQL não está rodando, ou está em outra porta (troque o `3306` na URL).
 - **Erro de checksum do Flyway** → um arquivo de migração foi editado depois de rodar.
   Em ambiente de estudo, o jeito mais simples é apagar o banco e rodar de novo:
   `DROP DATABASE rotasolidaria;`
-- **Já tinha rodado o projeto antigo** → ele usava outro banco (`database_dev`, porta 3307 no Docker), então não interfere.
