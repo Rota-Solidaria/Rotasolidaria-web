@@ -19,16 +19,14 @@ MySQL, Flyway e `JdbcTemplate`. Sem Docker, sem Spring Security, sem JPA, sem e-
 1. Abra `src/main/resources/application.properties` e coloque o usuário e a senha do **seu** MySQL:
    ```properties
    spring.datasource.username=root
-   spring.datasource.password=root
+   spring.datasource.password=
    ```
-   O banco `rotasolidaria` é criado sozinho (`createDatabaseIfNotExist=true`).
 
 2. Rode o projeto:
    - pela IDE: execute a classe `RotasolidariaApplication`, **ou**
    - pelo terminal, na pasta do projeto:
      ```
-     ./mvnw spring-boot:run        (Linux/Mac)
-     mvnw.cmd spring-boot:run      (Windows)
+     mvn spring-boot:run      (Windows)
      ```
 
 3. Acesse **http://localhost:8080**
