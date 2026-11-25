@@ -10,7 +10,6 @@
 <main class="container caixa-centro">
   <div class="cartao">
     <h1>Entrar</h1>
-    <p>Doador: entre para ver e cancelar suas inscrições. Organizador: use o mesmo formulário para abrir o painel.</p>
 
     <#if erro??>
       <div class="alerta alerta-erro" role="alert">${erro}</div>
