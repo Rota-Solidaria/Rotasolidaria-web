@@ -40,9 +40,37 @@
   color-scheme: dark;
 }
 
+/* ---------------- Alto contraste (painel de acessibilidade) ---------------- */
+/* Fundo preto, texto branco e destaques em amarelo (contraste acima de 7:1, WCAG AAA) */
+:root[data-tema="contraste"] {
+  --vermelho: #FFE500;
+  --vermelho-escuro: #FFFFFF;
+  --vermelho-claro: #000000;
+  --fundo: #000000;
+  --branco: #000000;
+  --cinza-claro: #000000;
+  --borda: #FFFFFF;
+  --texto: #FFFFFF;
+  --texto2: #FFFFFF;
+  --verde: #7CFF9B;
+  --verde-claro: #000000;
+  --amarelo: #FFE500;
+  --amarelo-claro: #000000;
+  --borda-campo: #FFFFFF;
+  --vermelho-fundo: #FFE500;
+  --vermelho-fundo-hover: #FFFFFF;
+  --sobre-vermelho: #000000;
+  color-scheme: dark;
+}
+:root[data-tema="contraste"] main a:not(.btn) { text-decoration: underline; }
+:root[data-tema="contraste"] a:focus-visible,
+:root[data-tema="contraste"] button:focus-visible { outline: 3px solid #FFE500; outline-offset: 2px; }
+
 .logo-escuro { display: none; }
-:root[data-tema="escuro"] .logo-claro { display: none; }
-:root[data-tema="escuro"] .logo-escuro { display: block; }
+:root[data-tema="escuro"] .logo-claro,
+:root[data-tema="contraste"] .logo-claro { display: none; }
+:root[data-tema="escuro"] .logo-escuro,
+:root[data-tema="contraste"] .logo-escuro { display: block; }
 
 /* Texto maior (painel de acessibilidade) */
 :root[data-fonte="1"] body { zoom: 1.12; }

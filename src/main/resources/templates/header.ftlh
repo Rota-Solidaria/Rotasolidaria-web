@@ -44,6 +44,7 @@
           <div class="acess-opcoes">
             <button type="button" data-ajuste="tema" data-valor="claro">Claro</button>
             <button type="button" data-ajuste="tema" data-valor="escuro">Escuro</button>
+            <button type="button" data-ajuste="tema" data-valor="contraste">Contraste</button>
           </div>
         </div>
 
