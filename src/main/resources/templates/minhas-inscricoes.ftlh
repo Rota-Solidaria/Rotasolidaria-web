@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <title>Rota Solidária</title>
+  <title>Minhas inscrições – Rota Solidária</title>
   <#include "head.ftlh">
 </head>
 <body>
@@ -21,7 +21,11 @@
     </div>
 
     <#if inscricoes?size == 0>
-      <div class="alerta alerta-aviso">Você ainda não se inscreveu em nenhuma excursão.</div>
+      <div class="cartao estado-vazio">
+        <h2>Você ainda não tem viagens marcadas</h2>
+        <p>Quando você reservar uma vaga, ela aparece aqui com a data, o horário e o local de saída do ônibus. Daqui também dá para cancelar, se precisar.</p>
+        <a class="btn btn-vermelho" href="/campanhas">Escolher minha primeira excursão</a>
+      </div>
     <#else>
       <div class="grade">
         <#list inscricoes as i>

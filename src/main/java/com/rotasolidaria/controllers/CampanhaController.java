@@ -74,22 +74,30 @@ public class CampanhaController {
         }
 
         String erro = null;
+        String campoErro = null; // campo que a página destaca e onde coloca o cursor
         if (nome.isBlank()) {
-            erro = "Informe o seu nome.";
+            erro = "Falta o seu nome para reservar a vaga.";
+            campoErro = "nome";
         } else if (telefone.isBlank() || telefone.length() < 8) {
-            erro = "Informe um telefone (WhatsApp) válido, com DDD.";
+            erro = "Confira o telefone: ele precisa ter DDD e número, por exemplo (15) 99999-9999.";
+            campoErro = "telefone";
         } else if (cidade.isBlank()) {
-            erro = "Informe a cidade de onde você vai sair.";
+            erro = "Falta a cidade de onde você vai sair.";
+            campoErro = "cidade";
         } else if (!campanha.isAceitaInscricao()) {
             erro = "Essa excursão não está mais aceitando inscrições.";
         } else if (inscricaoRepository.existeTelefone(campanhaId, telefone.trim())) {
-            erro = "Já existe uma inscrição com esse telefone nesta excursão.";
+            erro = "Esse telefone já está inscrito nesta excursão, então sua vaga já está garantida. Não precisa se inscrever de novo.";
+            campoErro = "telefone";
         }
 
         if (erro != null) {
             model.addAttribute("campanha", campanha);
             model.addAttribute("pagina", "campanhas");
             model.addAttribute("erro", erro);
+            if (campoErro != null) {
+                model.addAttribute("campoErro", campoErro);
+            }
             model.addAttribute("nome", nome);
             model.addAttribute("telefone", telefone);
             model.addAttribute("email", email);

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <title>Rota Solidária</title>
+  <title>${campanha.titulo} – Rota Solidária</title>
   <#include "head.ftlh">
 </head>
 <body>
@@ -34,7 +34,7 @@
 
       <#if campanha.aceitaInscricao>
         <#if erro??>
-          <div class="alerta alerta-erro">${erro}</div>
+          <div class="alerta alerta-erro" role="alert" id="erro-form">${erro}</div>
         </#if>
 
         <#if doador??>
@@ -45,31 +45,38 @@
 
         <form class="formulario" method="post" action="/inscrever">
           <input type="hidden" name="campanhaId" value="${campanha.id?c}">
+          <p class="ajuda">Campos com * são obrigatórios.</p>
 
+          <#-- campoErro (enviado pelo controller) marca o campo com problema -->
           <label for="nome">Nome completo *</label>
-          <input id="nome" name="nome" value="${nome!}" required>
+          <input id="nome" name="nome" value="${nome!}" autocomplete="name" required
+                 <#if campoErro?? && campoErro == "nome">aria-invalid="true" aria-describedby="erro-form" autofocus</#if>>
 
           <div class="linha">
             <div>
               <label for="telefone">Telefone / WhatsApp *</label>
-              <input id="telefone" name="telefone" value="${telefone!}" placeholder="(15) 99999-9999" required>
+              <input id="telefone" name="telefone" type="tel" inputmode="tel" value="${telefone!}" placeholder="(15) 99999-9999" autocomplete="tel" required
+                     <#if campoErro?? && campoErro == "telefone">aria-invalid="true" aria-describedby="erro-form" autofocus</#if>>
             </div>
             <div>
               <label for="email">E-mail (opcional)</label>
-              <input id="email" name="email" type="email" value="${email!}">
+              <input id="email" name="email" type="email" value="${email!}" autocomplete="email">
             </div>
           </div>
 
           <label for="cidade">Cidade de onde você sai *</label>
-          <input id="cidade" name="cidade" value="${cidade!}" required>
+          <input id="cidade" name="cidade" value="${cidade!}" autocomplete="address-level2" required
+                 <#if campoErro?? && campoErro == "cidade">aria-invalid="true" aria-describedby="erro-form" autofocus</#if>>
 
           <label for="observacao">Observação (opcional)</label>
-          <textarea id="observacao" name="observacao" rows="3">${observacao!}</textarea>
+          <textarea id="observacao" name="observacao" rows="3" aria-describedby="observacao-ajuda">${observacao!}</textarea>
+          <p class="ajuda" id="observacao-ajuda">Ex.: "primeira vez doando". Não precisa contar problemas de saúde aqui: a triagem é feita no hemocentro.</p>
 
-          <button class="btn btn-vermelho" type="submit">Enviar inscrição</button>
+          <button class="btn btn-vermelho" type="submit">Garantir minha vaga</button>
+          <p class="ajuda aviso-dados">Usamos seu nome, telefone e cidade só para organizar esta viagem. Eles ficam visíveis apenas para o organizador da excursão.</p>
         </form>
       <#else>
-        <div class="alerta alerta-aviso">
+        <div class="alerta alerta-aviso" role="status">
           Essa excursão não está aceitando inscrições (vagas esgotadas ou inscrições encerradas).
         </div>
         <a class="btn" href="/campanhas">Ver outras excursões</a>

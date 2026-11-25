@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <title>Rota Solidária</title>
+  <title>Rota Solidária – Excursões gratuitas para doar sangue</title>
   <#include "head.ftlh">
 </head>
 <body>
@@ -66,7 +66,7 @@
       <h2>Próximas excursões</h2>
 
       <#if campanhas?size == 0>
-        <p>Nenhuma excursão aberta no momento.</p>
+        <p>Nenhuma excursão aberta no momento. Novas datas aparecem aqui assim que forem publicadas.</p>
       <#else>
         <div class="grade">
           <#list campanhas as c>
@@ -87,7 +87,7 @@
         </div>
       </#if>
 
-      <p style="margin-top: 24px;"><a href="/campanhas">Ver todas as excursões</a></p>
+      <p style="margin-top: 24px;"><a class="link-solto" href="/campanhas">Ver todas as excursões</a></p>
     </div>
   </section>
 </main>

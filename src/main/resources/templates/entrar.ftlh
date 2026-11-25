@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <title>Rota Solidária</title>
+  <title>Entrar – Rota Solidária</title>
   <#include "head.ftlh">
 </head>
 <body>
@@ -9,19 +9,19 @@
 
 <main class="container caixa-centro">
   <div class="cartao">
-    <h2>Entrar</h2>
-    <p>Entre na sua conta para ver e cancelar as suas inscrições.</p>
+    <h1>Entrar</h1>
+    <p>Doador: entre para ver e cancelar suas inscrições. Organizador: use o mesmo formulário para abrir o painel.</p>
 
     <#if erro??>
-      <div class="alerta alerta-erro">${erro}</div>
+      <div class="alerta alerta-erro" role="alert">${erro}</div>
     </#if>
 
     <form class="formulario" method="post" action="/entrar">
       <label for="email">E-mail</label>
-      <input id="email" name="email" type="email" value="${email!}" required>
+      <input id="email" name="email" type="email" value="${email!}" autocomplete="email" required>
 
       <label for="senha">Senha</label>
-      <input id="senha" name="senha" type="password" required>
+      <input id="senha" name="senha" type="password" autocomplete="current-password" required>
 
       <button class="btn btn-vermelho" type="submit">Entrar</button>
     </form>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <title>Rota Solidária</title>
+  <title>Inscrição confirmada – Rota Solidária</title>
   <#include "head.ftlh">
 </head>
 <body>
@@ -9,8 +9,8 @@
 
 <main class="container caixa-centro">
   <div class="cartao">
-    <div class="alerta alerta-ok">Inscrição recebida!</div>
-    <h2>Obrigado, ${inscricao.nome}!</h2>
+    <div class="alerta alerta-ok" role="status">Inscrição recebida!</div>
+    <h1>Obrigado, ${inscricao.nome}!</h1>
     <p>Sua inscrição na <strong>${campanha.titulo}</strong> foi registrada e
        <strong>sua vaga já está garantida</strong>.
        Se precisar, o organizador entra em contato pelo telefone <strong>${inscricao.telefone}</strong>.</p>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <title>Rota Solidária</title>
+  <title>Excursões abertas – Rota Solidária</title>
   <#include "head.ftlh">
 </head>
 <body>
@@ -17,8 +17,10 @@
 <main class="secao">
   <div class="container">
     <#if campanhas?size == 0>
-      <div class="alerta alerta-aviso">Nenhuma excursão aberta no momento.</div>
+      <div class="alerta alerta-aviso" role="status">Nenhuma excursão aberta no momento. Novas datas aparecem aqui assim que o organizador publicar. Enquanto isso, veja <a href="/como-doar">quem pode doar</a>.</div>
     <#else>
+      <#-- Título só para leitores de tela: mantém a ordem h1 > h2 > h3 -->
+      <h2 class="so-leitor">Excursões abertas</h2>
       <div class="grade">
         <#list campanhas as c>
           <div class="cartao">

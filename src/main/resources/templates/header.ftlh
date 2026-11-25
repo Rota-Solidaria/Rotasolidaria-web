@@ -1,4 +1,6 @@
 <#-- "pagina" (enviada pelo controller) marca o link ativo do menu -->
+<#-- Primeiro item do Tab: leva direto ao conteúdo, sem passar pelo menu (WCAG 2.4.1) -->
+<a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
 <header class="topo">
   <div class="container">
     <a class="logo" href="/">
@@ -85,7 +87,7 @@
         <path d="M3 10h18M8 3v4M16 3v4M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01"/>
       </svg>
     </span>
-    Campanhas
+    Excursões
   </a>
   <a href="<#if organizador??>/organizador<#elseif doador??>/minhas-inscricoes<#else>/entrar</#if>" <#if pagina?? && (pagina == "conta" || pagina == "organizador")>class="ativo" aria-current="page"</#if>>
     <span class="menu-icone">
@@ -96,3 +98,6 @@
     <#if organizador??>Painel<#elseif doador??>Minha conta<#else>Entrar</#if>
   </a>
 </nav>
+
+<#-- Destino do link "Pular para o conteúdo" -->
+<span id="conteudo" tabindex="-1"></span>

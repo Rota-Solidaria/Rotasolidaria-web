@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <title>Rota Solidária</title>
+  <title>Como doar sangue – Rota Solidária</title>
   <#include "head.ftlh">
 </head>
 <body>

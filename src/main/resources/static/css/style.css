@@ -462,6 +462,49 @@ main:has(> .secao:last-child) + .rodape { margin-top: 0; }
 .rodape a:hover { color: var(--vermelho); }
 .rodape-logo { height: 36px; width: auto; margin-bottom: 10px; }
 
+/* ---------------- Acessibilidade (ajustes da avaliação de IHC) ---------------- */
+/* Link "Pular para o conteúdo": escondido até receber o foco do teclado */
+.pular-conteudo {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 100;
+  background: var(--vermelho-fundo);
+  color: var(--sobre-vermelho);
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 10px;
+}
+.pular-conteudo:focus { top: 12px; outline: 3px solid var(--texto); outline-offset: 2px; }
+#conteudo:focus { outline: none; }
+
+/* Texto só para leitores de tela */
+.so-leitor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  margin: 0;
+}
+h2.so-leitor + .grade { margin-top: 0; }
+
+/* Alvos de toque com pelo menos 24px de altura (WCAG 2.2 – 2.5.8) */
+.rodape li a, .link-discreto, .link-solto { display: inline-block; padding: 4px 0; }
+
+/* Títulos h1 dentro das caixas centrais (Entrar, Criar conta, Confirmação, Erro) */
+.caixa-centro h1 { font-size: 26px; }
+
+/* Campo com erro: borda mais grossa além da cor, e mensagem ligada ao campo */
+.formulario [aria-invalid="true"] { border: 2px solid var(--vermelho); }
+.alerta-erro::before { content: "⚠ "; }
+.aviso-dados { margin-top: 12px; }
+
+/* Estado vazio de "Minhas inscrições" */
+.estado-vazio { max-width: 560px; }
+.estado-vazio h2 { font-size: 22px; }
+
 /* ---------------- Menu de baixo (só no celular) ---------------- */
 .menu-celular { display: none; }
 

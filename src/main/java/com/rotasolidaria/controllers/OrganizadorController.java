@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rotasolidaria.models.Campanha;
 import com.rotasolidaria.models.Inscricao;
@@ -88,7 +89,8 @@ public class OrganizadorController {
                                  @RequestParam(defaultValue = "0") int vagas,
                                  @RequestParam(defaultValue = "ABERTA") String status,
                                  HttpSession session,
-                                 Model model) {
+                                 Model model,
+                                 RedirectAttributes redirect) {
         if (naoEstaLogado(session)) {
             return "redirect:/entrar";
         }
@@ -126,29 +128,35 @@ public class OrganizadorController {
             return "admin/campanha-form";
         }
 
+        // Mensagem mostrada uma vez no painel depois do redirect (feedback de que deu certo)
         if (id == 0) {
             campanhaRepository.salvar(campanha);
+            redirect.addFlashAttribute("mensagem", "Excursão \"" + campanha.getTitulo() + "\" criada e publicada.");
         } else {
             campanhaRepository.atualizar(campanha);
+            redirect.addFlashAttribute("mensagem", "Alterações em \"" + campanha.getTitulo() + "\" salvas.");
         }
         return "redirect:/organizador";
     }
 
     @PostMapping("/organizador/campanha/status")
-    public String statusCampanha(@RequestParam Long id, @RequestParam String status, HttpSession session) {
+    public String statusCampanha(@RequestParam Long id, @RequestParam String status, HttpSession session,
+                                 RedirectAttributes redirect) {
         if (naoEstaLogado(session)) {
             return "redirect:/entrar";
         }
         campanhaRepository.alterarStatus(id, status);
+        redirect.addFlashAttribute("mensagem", "ABERTA".equals(status) ? "Inscrições reabertas." : "Inscrições encerradas.");
         return "redirect:/organizador";
     }
 
     @PostMapping("/organizador/campanha/excluir")
-    public String excluirCampanha(@RequestParam Long id, HttpSession session) {
+    public String excluirCampanha(@RequestParam Long id, HttpSession session, RedirectAttributes redirect) {
         if (naoEstaLogado(session)) {
             return "redirect:/entrar";
         }
         campanhaRepository.excluir(id);
+        redirect.addFlashAttribute("mensagem", "Excursão excluída.");
         return "redirect:/organizador";
     }
 

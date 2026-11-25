@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <title>Rota Solidária</title>
+  <title>Painel do organizador – Rota Solidária</title>
   <#include "../head.ftlh">
 </head>
 <body>
@@ -19,8 +19,12 @@
       </div>
     </div>
 
+    <#if mensagem??>
+      <div class="alerta alerta-ok" role="status">✓ ${mensagem}</div>
+    </#if>
+
     <#if campanhas?size == 0>
-      <div class="alerta alerta-aviso">Nenhuma excursão cadastrada ainda.</div>
+      <div class="alerta alerta-aviso" role="status">Nenhuma excursão cadastrada ainda.</div>
     <#else>
       <div class="tabela-caixa">
         <table>

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <title>Rota Solidária</title>
+  <title><#if campanha.id == 0>Nova excursão<#else>Editar excursão</#if> – Rota Solidária</title>
   <#include "../head.ftlh">
 </head>
 <body>
 <#include "../header.ftlh">
 
 <main class="container" style="max-width: 720px; padding: 40px 0;">
-  <a href="/organizador">Voltar para as excursões</a>
+  <a class="link-solto" href="/organizador">Voltar para as excursões</a>
 
   <div class="cartao" style="margin-top: 14px;">
     <#if campanha.id == 0>
@@ -18,7 +18,7 @@
     </#if>
 
     <#if erro??>
-      <div class="alerta alerta-erro">${erro}</div>
+      <div class="alerta alerta-erro" role="alert">${erro}</div>
     </#if>
 
     <form class="formulario" method="post" action="/organizador/campanha/salvar">

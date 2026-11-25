@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <title>Rota Solidária</title>
+  <title>Inscritos: ${campanha.titulo} – Rota Solidária</title>
   <#include "../head.ftlh">
 </head>
 <body>
@@ -9,7 +9,7 @@
 
 <main class="secao">
   <div class="container">
-    <p class="nao-imprimir"><a href="/organizador">Voltar para as excursões</a></p>
+    <p class="nao-imprimir"><a class="link-solto" href="/organizador">Voltar para as excursões</a></p>
 
     <div class="barra-admin">
       <div>
@@ -27,7 +27,7 @@
     </div>
 
     <#if inscricoes?size == 0>
-      <div class="alerta alerta-aviso">Ninguém se inscreveu nesta excursão ainda.</div>
+      <div class="alerta alerta-aviso" role="status">Ninguém se inscreveu nesta excursão ainda.</div>
     <#else>
       <div class="tabela-caixa">
         <table>
